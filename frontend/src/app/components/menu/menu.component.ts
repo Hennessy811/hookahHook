@@ -11,8 +11,10 @@ export class MenuComponent implements OnInit {
   constructor(private menu: CartService) { }
 
   menuList: Category[] = [];
+  home;
 
   ngOnInit() {
+    this.home = localStorage.getItem('route');
     this.menuList = this.menu.getMenu;
   }
 

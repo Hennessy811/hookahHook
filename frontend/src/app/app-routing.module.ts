@@ -5,6 +5,7 @@ import {ManageAccountComponent} from "./components/manage-account/manage-account
 import {InstructionsComponent} from "./components/instructions/instructions.component";
 import {CartComponent} from "./components/cart/cart.component";
 import {MenuComponent} from "./components/menu/menu.component";
+import {OnTheWayComponent} from "./components/on-the-way/on-the-way.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'service/:placeId/:tableId/menu', component: MenuComponent
+  },
+  {
+    path: 'service/:placeId/:tableId/ontheway', component: OnTheWayComponent
   },
   {
     path: 'dashboard/:placeId', component: ManageAccountComponent

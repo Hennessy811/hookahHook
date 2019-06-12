@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CartItem, CartService} from "../../core/services/cart.service";
+import {PlaceService} from "../../core/services/place.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +10,9 @@ import {CartItem, CartService} from "../../core/services/cart.service";
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cart: CartService) { }
+  constructor(private cart: CartService,
+              private router: Router,
+              private place: PlaceService) { }
 
   cartList: CartItem[] = [
   ];
@@ -29,7 +33,10 @@ export class CartComponent implements OnInit {
   }
 
   dispatchOrder() {
-    alert('Заказ отправлен');
+    this.place.dispatchOrder(localStorage.getItem('route').split('/')[3], this.cartList);
+    this.cart.clearCart();
+    this.cartList = this.cart.getCart;
+    this.router.navigate([localStorage.getItem('route') + '/ontheway']);
   }
 
   ngOnInit() {

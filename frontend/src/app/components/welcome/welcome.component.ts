@@ -61,6 +61,9 @@ export class WelcomeComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    if (!localStorage.getItem('route')) {
+      localStorage.setItem('route', this.router.url)
+    }
     // this.getActions();
     // localStorage.setItem('route', this.router.url)
     //

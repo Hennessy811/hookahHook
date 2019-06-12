@@ -14,6 +14,7 @@ import {MatButtonModule, MatDividerModule, MatExpansionModule, MatIconModule} fr
 import { MenuComponent } from './components/menu/menu.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import {OnTheWayComponent} from "./components/on-the-way/on-the-way.component";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
     ActionComponent,
     MenuComponent,
     CartComponent,
-    HeaderComponent
+    HeaderComponent,
+    OnTheWayComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,10 @@
 <div class="container" *ngIf="menuList.length">
-  <h1>Меню</h1>
+
+  <div class="menu-wrapper flex space-between">
+    <button mat-icon-button [routerLink]="[home ? home : '']"><mat-icon>arrow_back</mat-icon></button>
+    <h1>Меню</h1>
+  </div>
+
 
   <mat-accordion>
     <mat-expansion-panel *ngFor="let category of menuList" [expanded]="category.id === '0'">
