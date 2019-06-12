@@ -4,6 +4,6 @@
   </div>
 
   <div class="cart" routerLink="cart">
-    <button mat-raised-button color="primary">Заказ</button>
+    <button mat-raised-button color="primary">Заказ <span class="cart-indicator">{{cart.counter$ | async}}</span></button>
   </div>
 </div>

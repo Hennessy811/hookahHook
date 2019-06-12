@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -75,10 +76,13 @@ export class CartService {
       ]
     },
   ];
+  counter$ = new BehaviorSubject(0);
 
-  cart: CartItem[] = [];
+  private cart: CartItem[] = [];
+
 
   constructor() {
+    this.counter$.next(0);
   }
 
   addItem(item: CartItem) {
@@ -88,11 +92,13 @@ export class CartService {
       item.quantity++;
       this.cart.push(item);
     }
+    this.counter$.next(this.cart.length);
   }
 
   removeItem(id: string) {
     this.cart.filter(item => item.id === id)[0].quantity = 0;
     this.cart = this.cart.filter(item => item.id !== id);
+    this.counter$.next(this.cart.length);
   }
 
   increase(id: string) {
@@ -101,25 +107,28 @@ export class CartService {
         item.quantity++;
       }
       return item;
-    })
+    });
+    this.counter$.next(this.cart.length);
   }
 
   decrease(id: string) {
-    let item: CartItem = this.cart.filter(value => value.id === id)[0];
+    const item: CartItem = this.cart.filter(value => value.id === id)[0];
     if (item.quantity === 1) {
-      this.removeItem(id)
+      this.removeItem(id);
     } else {
       this.cart = this.cart.map(item => {
         if (item.id === id) {
           item.quantity--;
         }
         return item;
-      })
+      });
     }
+    this.counter$.next(this.cart.length);
   }
 
   clearCart() {
     this.cart = [];
+    this.counter$.next(this.cart.length);
   }
 
   get getCart(): CartItem[] {
@@ -134,7 +143,7 @@ export class CartService {
 export interface Category {
   id: string;
   label: string;
-  items: CartItem[]
+  items: CartItem[];
 }
 
 export interface CartItem {

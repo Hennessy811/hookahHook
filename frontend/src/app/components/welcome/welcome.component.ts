@@ -43,8 +43,6 @@ export class WelcomeComponent implements OnInit {
     },
   ];
 
-  render: IAction[] = [];
-
   dispatched(event: IAction) {
     console.log('Dispatched ', event);
     this.route.params.subscribe(res => {
