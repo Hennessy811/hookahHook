@@ -1,0 +1,20 @@
+<div class="container" *ngIf="menuList.length">
+  <h1>Меню</h1>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let category of menuList" [expanded]="category.id === '0'">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{category.label}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="menu-item" *ngFor="let item of category.items">
+        <h3>{{item.label}}</h3>
+        <p>{{item.description}}</p>
+        <h5>{{item.price}}</h5>
+
+        <button mat-raised-button (click)="addToCart(item)">Добавить к заказу</button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

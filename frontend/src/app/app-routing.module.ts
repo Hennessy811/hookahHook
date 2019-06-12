@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {ManageAccountComponent} from "./components/manage-account/manage-account.component";
 import {InstructionsComponent} from "./components/instructions/instructions.component";
+import {CartComponent} from "./components/cart/cart.component";
+import {MenuComponent} from "./components/menu/menu.component";
 
 const routes: Routes = [
   {
@@ -12,13 +14,16 @@ const routes: Routes = [
     path: 'service/:placeId/:tableId', component: WelcomeComponent
   },
   {
-    path: 'service/:placeId/:tableId/menu', component: WelcomeComponent
+    path: 'service/:placeId/:tableId/menu', component: MenuComponent
   },
   {
     path: 'dashboard/:placeId', component: ManageAccountComponent
   },
   {
     path: 'instructions', component: InstructionsComponent
+  },
+  {
+    path: 'cart', component: CartComponent
   },
   {
     path: '**', redirectTo: 'instructions'

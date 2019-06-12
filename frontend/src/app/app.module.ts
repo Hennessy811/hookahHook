@@ -10,7 +10,10 @@ import {ScannerComponent} from "./components/scanner/scanner.component";
 import {ActionComponent} from "./components/shared/action/action.component";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule} from "@angular/material";
+import {MatButtonModule, MatDividerModule, MatExpansionModule, MatIconModule} from "@angular/material";
+import { MenuComponent } from './components/menu/menu.component';
+import { CartComponent } from './components/cart/cart.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 
 @NgModule({
@@ -20,12 +23,18 @@ import {MatButtonModule} from "@angular/material";
     WelcomeComponent,
     InstructionsComponent,
     ScannerComponent,
-    ActionComponent
+    ActionComponent,
+    MenuComponent,
+    CartComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatDividerModule,
+    MatIconModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     MatButtonModule
   ],

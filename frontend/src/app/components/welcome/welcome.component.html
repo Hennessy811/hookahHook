@@ -1,5 +1,7 @@
 <h1>Добро пожаловать в Hookah_Hook</h1>
 <div class="actions-container">
-  <app-action class="actions-item" *ngFor="let action of render" [action]="action" (dispatch)="dispatched($event)">
+  <app-action class="actions-item" *ngFor="let action of actions" [action]="action" (dispatch)="dispatched($event)">
   </app-action>
+
+  <app-action class="actions-item" [action]="menuAction" [routerLink]="['menu']" ></app-action>
 </div>

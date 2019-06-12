@@ -15,6 +15,13 @@ export class WelcomeComponent implements OnInit {
 
   unsubscribe = new Subject();
 
+  menuAction: IAction = {
+    id: 1,
+    message: 'menu',
+    label: 'Меню',
+    endpoint: ''
+  };
+
   actions: IAction[] = [
     {
       id: 1,
@@ -27,29 +34,6 @@ export class WelcomeComponent implements OnInit {
       message: 'helpme',
       label: 'Позвать калянщика',
       endpoint: ''
-    },
-    {
-      id: 3,
-      message: 'helpme',
-      label: 'Меню',
-      endpoint: 'menu',
-      isRoute: true
-    },
-    {
-      id: 4,
-      message: 'checkout',
-      label: 'Счёт',
-      endpoint: 'checkout'
-    },
-  ];
-
-  menu: IAction[] = [
-    {
-      id: 3,
-      message: 'helpme',
-      label: 'Меню',
-      endpoint: 'menu',
-      isRoute: true
     },
     {
       id: 4,
@@ -77,14 +61,15 @@ export class WelcomeComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getActions();
-
-    if (this.router.url.indexOf('menu') > 0) {
-      this.render = this.menu
-    }
-    else {
-      this.render = this.actions
-    }
+    // this.getActions();
+    // localStorage.setItem('route', this.router.url)
+    //
+    // if (this.router.url.indexOf('menu') > 0) {
+    //   this.render = this.menu
+    // }
+    // else {
+    //   this.render = this.actions
+    // }
   }
 
   getActions() {

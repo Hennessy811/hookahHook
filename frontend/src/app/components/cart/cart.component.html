@@ -1,0 +1,27 @@
+<div class="container" *ngIf="cartList.length; else empty">
+  <div class="menu-item" *ngFor="let item of cartList">
+    <h3>{{item.label}}</h3>
+    <p>{{item.description}}</p>
+    <h5>{{item.price}}</h5>
+
+    <div class="controls flex space-between">
+      <button mat-raised-button (click)="removeFromCart(item.id)">Убрать</button>
+
+      <div class="counter-controls flex space-between">
+        <button mat-raised-button color="primary" (click)="increase(item.id)"><mat-icon>add</mat-icon></button>
+        <strong>{{item.quantity}}</strong>
+        <button mat-raised-button color="warn" (click)="decrease(item.id)"><mat-icon>delete</mat-icon></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-h-sm"></div>
+
+  <button mat-raised-button class="full-width stick-bottom" color="accent" (click)="dispatchOrder()">Сделать заказ</button>
+</div>
+
+<ng-template #empty>
+  <div class="empty text-center">
+    <h3>Пока здесь ничего нет...</h3>
+  </div>
+</ng-template>
