@@ -59,8 +59,10 @@ export class WelcomeComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (!localStorage.getItem('route')) {
+    if (!localStorage.getItem('route') || this.router.url !== localStorage.getItem('route')) {
+      console.log('Пересел')
       localStorage.setItem('route', this.router.url)
+      window.location.reload();
     }
     // this.getActions();
     // localStorage.setItem('route', this.router.url)

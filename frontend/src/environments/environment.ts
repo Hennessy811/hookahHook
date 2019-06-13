@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://someUrl/'
+  // apiURL: 'https://someUrl/'
+  callURL: 'http://hookah.s2u.su/api/helporcheck.php',
+  orderURL: 'http://hookah.s2u.su/api/order.php'
 };
 
 /*

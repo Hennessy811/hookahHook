@@ -15,19 +15,25 @@ export class PlaceService {
               private router: Router) {}
 
   getActions(placeId: string, tableId: string): Observable<IAction> {
-    return this.http.get<IAction>(`${environment.apiURL}`)
+    return this.http.get<IAction>(`${environment.callURL}`)
   }
 
   dispatchAction(message: string, table: string) {
-    this.http.get(`${environment.apiURL}?table=${table}&action=${message}`)
+    this.http.get(`${environment.callURL}?table=${table}&action=${message}`)
       .subscribe(res => console.log(res));
     this.router.navigate([localStorage.getItem('route') + '/ontheway'])
   }
 
   dispatchOrder(table: string, order: CartItem[]) {
-    this.http.post(`${environment.apiURL}order`, {
-      order,
-      table
+    this.http.post(`${environment.orderURL}`, {
+      data: {
+        orderData: order,
+        tableId: table
+      }
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }).subscribe(res => console.log(res))
     this.router.navigate([localStorage.getItem('route') + '/ontheway'])
   }
