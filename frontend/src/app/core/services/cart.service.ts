@@ -83,7 +83,6 @@ export class CartService {
   private get countQuantities() {
     let total = 0;
     this.cart.forEach(({quantity}) => total += quantity);
-    console.log(total);
     return total;
   }
 

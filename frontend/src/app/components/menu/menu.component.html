@@ -15,7 +15,7 @@
       </mat-expansion-panel-header>
       <div class="menu-item" *ngFor="let item of category.items">
         <h3>{{item.label}}</h3>
-        <p>{{item.description}}</p>
+        <p *ngIf="item.description">{{item.description}}</p>
         <div class="bottom-item flex space-between">
           <h5>{{item.price}}</h5>
           <button mat-raised-button (click)="addToCart(item)"><mat-icon>add</mat-icon></button>

@@ -36,7 +36,6 @@ export class CartComponent implements OnInit {
     this.place.dispatchOrder(localStorage.getItem('route').split('/')[3], this.cartList);
     this.cart.clearCart();
     this.cartList = this.cart.getCart;
-    this.router.navigate([localStorage.getItem('route') + '/ontheway']);
   }
 
   ngOnInit() {

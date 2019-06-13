@@ -10,9 +10,9 @@
       <button mat-raised-button (click)="removeFromCart(item.id)">Убрать</button>
 
       <div class="counter-controls flex space-between">
-        <button mat-raised-button color="primary" (click)="increase(item.id)"><mat-icon>add</mat-icon></button>
-        <strong>{{item.quantity}}</strong>
         <button mat-raised-button color="warn" (click)="decrease(item.id)"><strong>-</strong></button>
+        <strong>{{item.quantity}}</strong>
+        <button mat-raised-button color="primary" (click)="increase(item.id)"><mat-icon>add</mat-icon></button>
       </div>
     </div>
   </div>

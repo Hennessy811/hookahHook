@@ -14,7 +14,7 @@ export class PlaceService {
   constructor(private http: HttpClient,
               private router: Router) {}
 
-  getActions (placeId: string, tableId: string): Observable<IAction> {
+  getActions(placeId: string, tableId: string): Observable<IAction> {
     return this.http.get<IAction>(`${environment.apiURL}`)
   }
 
@@ -28,6 +28,7 @@ export class PlaceService {
     this.http.post(`${environment.apiURL}order`, {
       order,
       table
-    })
+    }).subscribe(res => console.log(res))
+    this.router.navigate([localStorage.getItem('route') + '/ontheway'])
   }
 }
