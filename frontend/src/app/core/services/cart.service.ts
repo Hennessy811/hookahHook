@@ -80,9 +80,15 @@ export class CartService {
 
   private cart: CartItem[] = [];
 
+  private get countQuantities() {
+    let total = 0;
+    this.cart.forEach(({quantity}) => total += quantity);
+    console.log(total);
+    return total;
+  }
 
   constructor() {
-    this.counter$.next(0);
+    this.counter$.next(this.countQuantities);
   }
 
   addItem(item: CartItem) {
@@ -92,13 +98,13 @@ export class CartService {
       item.quantity++;
       this.cart.push(item);
     }
-    this.counter$.next(this.cart.length);
+    this.counter$.next(this.countQuantities);
   }
 
   removeItem(id: string) {
     this.cart.filter(item => item.id === id)[0].quantity = 0;
     this.cart = this.cart.filter(item => item.id !== id);
-    this.counter$.next(this.cart.length);
+    this.counter$.next(this.countQuantities);
   }
 
   increase(id: string) {
@@ -108,7 +114,7 @@ export class CartService {
       }
       return item;
     });
-    this.counter$.next(this.cart.length);
+    this.counter$.next(this.countQuantities);
   }
 
   decrease(id: string) {
@@ -123,12 +129,12 @@ export class CartService {
         return item;
       });
     }
-    this.counter$.next(this.cart.length);
+    this.counter$.next(this.countQuantities);
   }
 
   clearCart() {
     this.cart = [];
-    this.counter$.next(this.cart.length);
+    this.counter$.next(this.countQuantities);
   }
 
   get getCart(): CartItem[] {
