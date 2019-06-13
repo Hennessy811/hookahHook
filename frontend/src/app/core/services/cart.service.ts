@@ -94,7 +94,7 @@ export class CartService {
     if (this.cart.some(value => value.id === item.id)) {
       this.increase(item.id)
     } else {
-      item.quantity++;
+      item.quantity = 1;
       this.cart.push(item);
     }
     this.counter$.next(this.countQuantities);
@@ -132,8 +132,9 @@ export class CartService {
   }
 
   clearCart() {
-    this.cart = [];
-    this.counter$.next(this.countQuantities);
+    this.cart = Object.assign([], []);
+    // this.cart = [];
+    this.counter$.next(0);
   }
 
   get getCart(): CartItem[] {
