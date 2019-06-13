@@ -1,8 +1,10 @@
 <div class="container" *ngIf="cartList.length; else empty">
   <div class="menu-item" *ngFor="let item of cartList">
-    <h3>{{item.label}}</h3>
+    <div class="flex space-between">
+      <h3>{{item.label}}</h3>
+      <h5>{{item.price}}</h5>
+    </div>
     <p>{{item.description}}</p>
-    <h5>{{item.price}}</h5>
 
     <div class="controls flex space-between">
       <button mat-raised-button (click)="removeFromCart(item.id)">Убрать</button>

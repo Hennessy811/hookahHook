@@ -14,7 +14,7 @@ export class CartService {
         {
           id: '1',
           label: 'Чай черный',
-          description: "Прекрасный черный чай. Крепкий и вкусный, особенно с сахаром.",
+          description: "",
           isAvailable: true,
           price: "200 рублей / 500 мл",
           quantity: 0
